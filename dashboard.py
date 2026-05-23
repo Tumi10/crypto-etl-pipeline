@@ -18,7 +18,7 @@ with st.sidebar:
     coin_id = st.selectbox("Select a coin", dataFrame.index)
 
 # 3. title
-st.title("Crypto Dashboard")
+st.title("Crypto Dashboard Live :")
 
 # 4. metric cards
 st.subheader("Current Prices")
