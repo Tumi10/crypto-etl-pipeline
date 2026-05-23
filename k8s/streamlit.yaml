@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streamlit-deployment
+  labels:
+    app: streamlit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: streamlit
+  template:
+    metadata:
+      labels:
+        app: streamlit
+    spec:
+      containers:
+      - name: streamlit
+        image: cryptoregistry.azurecr.io/streamlit:latest
+        ports:
+        - containerPort: 8501
+        env:
+        - name: FASTAPI_URL
+          value: "http://fastapi-service"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: streamlit-service
+spec:
+  selector:
+    app: streamlit
+  ports:
+  - port: 80
+    targetPort: 8501
+  type: LoadBalancer

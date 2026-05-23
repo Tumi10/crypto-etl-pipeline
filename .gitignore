@@ -1,0 +1,10 @@
+# sensitive files
+terraform/main.tf
+*.json
+*.csv
+__pycache__/
+.terraform/
+*.tfstate
+*.tfstate.backup
+setup_db.py
+test_db.py
